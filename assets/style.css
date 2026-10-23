@@ -1,0 +1,95 @@
+:root {
+  --bg: #f6f7f9;
+  --surface: #ffffff;
+  --ink: #18212f;
+  --muted: #5b6676;
+  --line: #d9dee6;
+  --accent: #1d4f7a;
+  --accent-soft: #e6eef6;
+  --max: 46rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #11161d;
+    --surface: #18202a;
+    --ink: #e7ebf0;
+    --muted: #9aa5b4;
+    --line: #2b3542;
+    --accent: #8fbbe3;
+    --accent-soft: #1f2d3d;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { font-size: 17px; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Pretendard Variable", Pretendard, "Noto Sans KR", -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  line-height: 1.75;
+  word-break: keep-all;
+}
+
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+.wrap { max-width: var(--max); margin: 0 auto; padding: 0 1.25rem; }
+
+/* 상단 메뉴 */
+.site-header { border-bottom: 1px solid var(--line); background: var(--surface); }
+.site-header .wrap { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .5rem 1.5rem; padding-top: 1rem; padding-bottom: 1rem; }
+.brand { font-family: "Noto Serif KR", "Nanum Myeongjo", serif; font-weight: 700; font-size: 1.15rem; color: var(--ink); text-decoration: none; }
+.brand small { font-family: inherit; font-weight: 400; color: var(--muted); margin-left: .5rem; font-size: .8rem; }
+nav a { color: var(--muted); text-decoration: none; margin-right: 1.1rem; font-size: .95rem; }
+nav a:last-child { margin-right: 0; }
+nav a:hover, nav a[aria-current="page"] { color: var(--ink); }
+nav a[aria-current="page"] { border-bottom: 2px solid var(--accent); padding-bottom: 2px; }
+
+/* 첫 화면 */
+.hero { padding: 4rem 0 2.5rem; }
+.hero h1 { font-family: "Noto Serif KR", "Nanum Myeongjo", serif; font-size: clamp(2rem, 6vw, 3rem); line-height: 1.25; margin: 0 0 .25rem; letter-spacing: -.01em; }
+.hero .en { color: var(--muted); margin: 0 0 1.25rem; }
+.hero .role { font-size: 1.05rem; margin: 0 0 .25rem; }
+.hero .interests { color: var(--muted); margin: 1rem 0 0; max-width: 38rem; }
+
+/* 본문 */
+main { padding-bottom: 4rem; }
+main h1 { font-family: "Noto Serif KR", "Nanum Myeongjo", serif; font-size: 1.9rem; margin: 3rem 0 .5rem; }
+main h2 { font-family: "Noto Serif KR", "Nanum Myeongjo", serif; font-size: 1.25rem; margin: 2.5rem 0 .75rem; padding-bottom: .4rem; border-bottom: 1px solid var(--line); }
+main p.lead { color: var(--muted); margin: 0 0 1rem; }
+
+/* 목록: 연도 + 내용 */
+.entries { list-style: none; padding: 0; margin: 0; }
+.entries li { display: grid; grid-template-columns: 5.5rem 1fr; gap: .25rem 1rem; padding: .85rem 0; border-bottom: 1px solid var(--line); }
+.entries li:last-child { border-bottom: 0; }
+.entries .when { color: var(--muted); font-size: .92rem; font-variant-numeric: tabular-nums; }
+.entries .what strong { display: block; font-weight: 600; }
+.entries .what span { color: var(--muted); font-size: .95rem; }
+
+/* 바로가기 카드 3개 */
+.shortcuts { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); margin: 1.5rem 0 0; padding: 0; list-style: none; }
+.shortcuts a { display: block; height: 100%; padding: 1rem 1.1rem; background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: 4px; color: var(--ink); text-decoration: none; }
+.shortcuts a:hover { background: var(--accent-soft); }
+.shortcuts strong { display: block; margin-bottom: .2rem; }
+.shortcuts span { color: var(--muted); font-size: .92rem; line-height: 1.55; display: block; }
+
+/* 안내 문구 (직접 채울 부분) */
+.todo { background: var(--accent-soft); border-left: 4px solid var(--accent); padding: .75rem 1rem; border-radius: 4px; font-size: .93rem; color: var(--ink); margin: 1.25rem 0; }
+
+footer { border-top: 1px solid var(--line); padding: 1.5rem 0 3rem; color: var(--muted); font-size: .9rem; }
+footer a { color: var(--muted); }
+
+@media (max-width: 34rem) {
+  html { font-size: 16px; }
+  .entries li { grid-template-columns: 1fr; }
+  .hero { padding-top: 2.5rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
+}
